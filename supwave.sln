@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "supwave", "supwave.csproj", "{036D8156-73C0-44BA-8D81-59A77F1A613F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "supwave", "supwave\supwave.csproj", "{D9019D2B-3C9A-4EFC-B072-A49033D7802C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{036D8156-73C0-44BA-8D81-59A77F1A613F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{036D8156-73C0-44BA-8D81-59A77F1A613F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{036D8156-73C0-44BA-8D81-59A77F1A613F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{036D8156-73C0-44BA-8D81-59A77F1A613F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9019D2B-3C9A-4EFC-B072-A49033D7802C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9019D2B-3C9A-4EFC-B072-A49033D7802C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9019D2B-3C9A-4EFC-B072-A49033D7802C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9019D2B-3C9A-4EFC-B072-A49033D7802C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {43416B85-A36E-4767-A590-54556A6C76C6}
+		SolutionGuid = {1AADE1D7-49A5-4AFB-954A-E36854D4C06C}
 	EndGlobalSection
 EndGlobal
