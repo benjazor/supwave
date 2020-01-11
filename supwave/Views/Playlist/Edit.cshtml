@@ -1,0 +1,35 @@
+﻿@model supwave.Models.Playlist
+@{
+    ViewData["Title"] = "Edit Playlist";
+    var playlists = ViewData["Playlists"] as List<Playlist>;
+}
+
+<div class="text-center">
+
+    <h1 class="display-4">Delete a playlist</h1>
+    @if (playlists.Any())
+    {
+        <div class="playlists">
+            <form method="post">
+                <select id="Id" name="Id" type="number">
+                    @foreach (var playlist in playlists)
+                    {
+                        <option value="@playlist.Id">@playlist.Name</option>
+                    }
+                </select>
+                <input id="User" name="User" type="text" placeholder="New name"/>
+                <button type="submit">Rename</button>
+            </form>
+        </div>
+    }
+    else
+    {
+        <div class="playlists">
+            <div class="playlist-empty">
+                <p>You don't have any playlist</p>
+                <a href="/add-playlist">Add a new playlist to yout profile!</a>
+            </div>
+        </div>
+    }
+
+</div>

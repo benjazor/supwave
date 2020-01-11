@@ -9,15 +9,6 @@ using supwave.Data;
 
 namespace supwave.Controllers
 {
-    public class Address
-    {
-        public string Name { get; set; }
-        public string Street { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string PostalCode { get; set; }
-    }
-
     [Authorize]
     public class PlaylistController : Controller
     {
@@ -66,7 +57,7 @@ namespace supwave.Controllers
         [HttpPost, Route("delete-playlist")]
         public IActionResult Delete(Playlist playlist)
         {
-            Console.WriteLine(playlist.Id);
+
             // DELETE ALL SONGS IN THRE PLAYLIST
 
             // DELETE PLAYLIST            
@@ -79,5 +70,37 @@ namespace supwave.Controllers
             ViewData["Playlists"] = playlists;
             return View();
         }
+
+        [HttpGet, Route("edit-playlist")]
+        public IActionResult Edit()
+        {
+            // Retrive all user's playlist from the database
+            var playlists = _database.Playlist.Where(playlist => playlist.User.Equals(User.Identity.Name)).ToList();
+            ViewData["Playlists"] = playlists;
+            return View();
+        }
+
+
+        [HttpPost, Route("edit-playlist")]
+        public IActionResult Edit(Playlist playlist)
+        {
+            Console.WriteLine("Id: " + playlist.Id);
+            Console.WriteLine("Name: " + playlist.Name);
+            Console.WriteLine("User: " + playlist.User);
+
+            // CHANGE PLAYLIST NAME
+            var playlistToRename = _database.Playlist.First(p => p.Id == playlist.Id);
+            playlistToRename.Name = playlist.User;
+            _database.SaveChanges();
+
+            // Retrive all user's playlist from the database
+            var playlists = _database.Playlist.Where(playlist => playlist.User.Equals(User.Identity.Name)).ToList();
+            ViewData["Playlists"] = playlists;
+            return View();
+        }
+
+
+
+
     }
 }
