@@ -1,0 +1,30 @@
+﻿@model supwave.Models.Playlist
+@{
+    ViewData["Title"] = "Create";
+    var playlist = ViewData["Playlist"] as Playlist;
+}
+
+
+    @if (playlist != null)
+    {
+        <div class="created-playlist">
+            <p>@playlist.Id</p>
+            <p>@playlist.User</p>
+            <p>@playlist.Name</p>
+            <p>Playlist has been created!</p>
+        </div>
+    }
+    <fieldset>
+        @using (Html.BeginForm())
+        {
+            <p>
+                @Html.LabelFor(x => x.Name)
+                @Html.EditorFor(x => x.Name)
+            </p>
+            <p>
+                <button type="submit">Create playlist</button>
+            </p>
+        }
+
+    </fieldset>
+

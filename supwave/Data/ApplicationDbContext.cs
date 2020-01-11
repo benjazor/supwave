@@ -12,7 +12,7 @@ namespace supwave.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
         public DbSet<Playlist> Playlist { get; set; }
-        public DbSet<Playlist> Song { get; set; }
+        public DbSet<Song> Song { get; set; }
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -21,18 +21,15 @@ namespace supwave.Data
             modelBuilder.Entity<IdentityUser>(n => {
                 // Primary Key
                 n.HasKey(p => p.Id);
-
-                // Foreing Key
-                n.HasMany<Playlist>()
-                .WithOne()
-                .HasForeignKey(fk => fk.UserId)
-                .IsRequired();
             });
 
             modelBuilder.Entity<Playlist>(n =>
             {
                 // Primary Key
                 n.HasKey(p => p.Id);
+
+                // Id Auto Incrementation
+                n.Property(f => f.Id).ValueGeneratedOnAdd();
 
                 // Properties
                 n.Property(p => p.Name).HasMaxLength(64);
@@ -49,6 +46,9 @@ namespace supwave.Data
             {
                 // Primary Key
                 n.HasKey(p => p.Id);
+
+                // Id Auto Incrementation
+                n.Property(f => f.Id).ValueGeneratedOnAdd();
 
                 // Properties
                 n.Property(p => p.Name).HasMaxLength(64);

@@ -28,11 +28,10 @@ namespace supwave
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))); // Identity
-
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true).AddEntityFrameworkStores<ApplicationDbContext>(); // Identity
             services.AddControllersWithViews(); // MVC
             services.AddRazorPages(); // Razor Pages
-            services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("PlaylistContext"))); // Playlist Model In Database
+            //services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("PlaylistContext"))); // Playlist Model In Database
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
