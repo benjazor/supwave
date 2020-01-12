@@ -3,8 +3,10 @@
     ViewData["Title"] = "Delete Playlist";
     var playlists = ViewData["Playlists"] as List<Playlist>;
 }
+<link rel="stylesheet" href="~/css/form.css" />
 
-<div class="text-center">
+
+<div class="box">
 
     <h1 class="display-4">Delete a playlist</h1>
     @if (playlists.Any())

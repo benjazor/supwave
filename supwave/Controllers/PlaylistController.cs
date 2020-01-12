@@ -80,6 +80,12 @@ namespace supwave.Controllers
             return View();
         }
 
+        [Route("manage-playlist")]
+        public IActionResult Manager()
+        {
+            return View();
+        }
+
 
         [HttpPost, Route("edit-playlist")]
         public IActionResult Edit(Playlist playlist)

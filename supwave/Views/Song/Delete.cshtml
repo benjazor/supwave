@@ -5,16 +5,16 @@
     var songs = ViewData["songs"] as List<Song>;
 }
 
-<div class="text-center">
+<link rel="stylesheet" href="~/css/form.css" />
 
-    <h1 class="display-4">Delete a song</h1>
 
+<div class="box">
+    <h1>Delete a song</h1>
     @if (playlists.Any())
     {
         <div class="playlists">
             <form method="post">
-
-
+                <label for="playlistId">Playlist:</label>
                 <select id="playlistId" name="playlistId" type="number">
                     @foreach (var playlist in playlists)
                     {
@@ -22,6 +22,7 @@
                     }
                 </select>
 
+                <label for="Id">Song:</label>
                 <select id="Id" name="Id" type="number">
                     @foreach (var song in songs)
                     {

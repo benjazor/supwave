@@ -1,10 +1,13 @@
 ﻿@model supwave.Models.Playlist
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Add Playlist";
     var playlist = ViewData["Playlist"] as Playlist;
 }
 
+<link rel="stylesheet" href="~/css/form.css" />
 
+
+<div class="box">
     @if (playlist != null)
     {
         <div class="created-playlist">
@@ -28,3 +31,4 @@
 
     </fieldset>
 
+</div>

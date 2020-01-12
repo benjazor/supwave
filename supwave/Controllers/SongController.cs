@@ -35,7 +35,7 @@ namespace supwave.Controllers
         [HttpPost, Route("add-song")]
         public IActionResult Add(IFormFile file, string name, int playlistId)
         {
-            var songPath = "./wwwroot/song/" + DateTime.Now.Ticks.ToString("X2").Substring(7) + name + ".mp3";
+            var songPath = "/song/" + DateTime.Now.Ticks.ToString("X2").Substring(7) + name + ".mp3";
 
             Song song = new Song() { 
                 Name = name,
@@ -46,7 +46,7 @@ namespace supwave.Controllers
             _database.SaveChanges();
 
 
-            using (var fileStream = new FileStream(songPath, FileMode.Create, FileAccess.Write))
+            using (var fileStream = new FileStream("./wwwroot" + songPath, FileMode.Create, FileAccess.Write))
             {
                 file.CopyTo(fileStream);
             }
@@ -91,6 +91,18 @@ namespace supwave.Controllers
                 return Redirect("/");
             }
             return Redirect("/");
+        }
+
+        [HttpGet, Route("player")]
+        public IActionResult Player()
+        {
+            // Retrive all user's playlist from the database
+            var playlists = _database.Playlist.Where(playlist => playlist.User.Equals(User.Identity.Name)).ToList();
+            var songs = _database.Song.Where(song => song.PlaylistId.Equals(playlists[0].Id)).ToList();
+
+            ViewData["Playlists"] = playlists;
+            ViewData["Songs"] = songs;
+            return View();
         }
     }
 }

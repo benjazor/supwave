@@ -3,21 +3,25 @@
     ViewData["Title"] = "Edit Playlist";
     var playlists = ViewData["Playlists"] as List<Playlist>;
 }
+<link rel="stylesheet" href="~/css/form.css" />
 
-<div class="text-center">
 
-    <h1 class="display-4">Delete a playlist</h1>
+<div class="box">
+
+    <h1 class="display-4">Edit a playlist</h1>
     @if (playlists.Any())
     {
         <div class="playlists">
             <form method="post">
+                <label for="Id">Playlist:</label>
                 <select id="Id" name="Id" type="number">
                     @foreach (var playlist in playlists)
                     {
                         <option value="@playlist.Id">@playlist.Name</option>
                     }
                 </select>
-                <input id="User" name="User" type="text" placeholder="New name"/>
+                <label for="User">New name:</label>
+                <input id="User" name="User" type="text" placeholder="New name" />
                 <button type="submit">Rename</button>
             </form>
         </div>

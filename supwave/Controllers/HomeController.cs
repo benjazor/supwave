@@ -20,12 +20,27 @@ namespace supwave.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return Redirect("/player");
+            }
+            else
+            {
+                return Redirect("/welcome");
+            }
         }
 
-        public IActionResult Privacy()
+        [Route("welcome")]
+        public IActionResult Welcome()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return Redirect("/player");
+            }
+            else
+            {
+                return View();
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
