@@ -249,6 +249,9 @@ namespace supwave.Data.Migrations
                         .HasColumnType("nvarchar(64)")
                         .HasMaxLength(64);
 
+                    b.Property<string>("Path")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("PlaylistId")
                         .HasColumnType("int");
 

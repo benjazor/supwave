@@ -1,0 +1,47 @@
+﻿@model supwave.Models.Playlist
+@{
+    ViewData["Title"] = "Delete Song";
+    var playlists = ViewData["Playlists"] as List<Playlist>;
+    var songs = ViewData["songs"] as List<Song>;
+}
+
+<div class="text-center">
+
+    <h1 class="display-4">Delete a song</h1>
+
+    @if (playlists.Any())
+    {
+        <div class="playlists">
+            <form method="post">
+
+
+                <select id="playlistId" name="playlistId" type="number">
+                    @foreach (var playlist in playlists)
+                    {
+                        <option value="@playlist.Id">@playlist.Name</option>
+                    }
+                </select>
+
+                <select id="Id" name="Id" type="number">
+                    @foreach (var song in songs)
+                    {
+                        <option value="@song.Id">@song.Name</option>
+                    }
+                </select>
+
+                <button type="submit">Delete</button>
+            </form>
+            <script type="text/javascript" src="/js/delete-song.js"></script>
+        </div>
+    }
+    else
+    {
+        <div class="playlists">
+            <div class="playlist-empty">
+                <p>You don't have any playlist</p>
+                <a href="/add-playlist">Add a new playlist to yout profile!</a>
+            </div>
+        </div>
+    }
+
+</div>

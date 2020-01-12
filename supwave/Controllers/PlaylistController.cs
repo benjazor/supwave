@@ -84,10 +84,6 @@ namespace supwave.Controllers
         [HttpPost, Route("edit-playlist")]
         public IActionResult Edit(Playlist playlist)
         {
-            Console.WriteLine("Id: " + playlist.Id);
-            Console.WriteLine("Name: " + playlist.Name);
-            Console.WriteLine("User: " + playlist.User);
-
             // CHANGE PLAYLIST NAME
             var playlistToRename = _database.Playlist.First(p => p.Id == playlist.Id);
             playlistToRename.Name = playlist.User;
@@ -99,8 +95,31 @@ namespace supwave.Controllers
             return View();
         }
 
-
-
-
+        [HttpGet, Route("get-playlist-songs")]
+        public IActionResult Get(string id)
+        {
+            // Check if we get a playlist
+            try
+            {
+                var playlist = _database.Playlist.First(p => p.Id == Int32.Parse(id));
+                if (playlist != null)
+                {
+                    var songs = _database.Song.Where(song => song.PlaylistId.Equals(playlist.Id));
+                    if (songs.Any())
+                    {
+                        return Ok(Json(songs));
+                    }
+                    else
+                    {
+                        return NotFound("empty");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                return NotFound("playlist does not exists");
+            }
+            return NotFound();
+        }
     }
 }
